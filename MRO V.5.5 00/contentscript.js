@@ -6,6 +6,9 @@
  * Written by Growbot <growbotautomator@gmail.com>, 2016-2023
  */
 
+// Local authorization flag replaces the old remote login system
+const isAuthorized = true;
+
 var guidCookie = localStorage['gbUserGuid'];
 var urlAcctInfo2 = 'https://www.instagram.com/';
 var urlAcctInfo = 'https://i.instagram.com/api/v1/users/web_profile_info/?username=';
@@ -250,7 +253,8 @@ var gblCheckboxPlugin;
 
 var instabot_install_date = 0; // set from background page
 var instabot_free_trial_time = 0; // set from background page
-var instabot_has_license = true;
+// Authorization state used throughout the extension
+var instabot_has_license = isAuthorized;
 
 var defaultFilterOptions = {
     applyFiltersAutomatically: true,
@@ -2643,9 +2647,17 @@ function ajaxGetPendingFollowRequests(after) {
 }
 
 
-function ajaxGetAllUsersFollowers(after) {
+async function ajaxGetAllUsersFollowers(after) {
     if (typeof after != 'string') {
         after = '';
+
+        // Wait for the followers modal to appear to avoid DOM errors
+        try {
+            await waitForFollowersList();
+        } catch (e) {
+            outputMessage(e);
+            return;
+        }
 
         if (gblOptions.endcursors) {
 
@@ -7246,7 +7258,8 @@ function userUpdateListener() {
             }
 
             if (request.instabot_has_license) {
-                instabot_has_license = request.instabot_has_license;
+                // Ignore external license checks; use local authorization flag
+                instabot_has_license = isAuthorized;
 
                 if (request.igBotUser) {
                     localStorage['gbUserGuid'] = request.igBotUser.user_guid;
