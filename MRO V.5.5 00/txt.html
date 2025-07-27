@@ -1,0 +1,425 @@
+<div class="tab6">
+    <div id="mroAssistant">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Assistente MRO</h3>
+        <div class="mro-description bg-gray-50 rounded-lg p-4 mb-4 shadow-sm">
+            <p class="text-gray-800">Este assistente ajudará você a encontrar o melhor público para interagir, com base no seu nicho. Ele irá pesquisar e fornecer orientações sobre perfis relevantes, estratégias eficazes, melhores horários e hashtags em alta para o seu nicho.</p>
+        </div>
+        
+        <div class="mro-search-container flex flex-col gap-4 mb-6">
+            <div class="mro-input-group flex items-center gap-3 flex-wrap">
+                <label for="mroNichoInput" class="font-semibold text-gray-900 min-w-[80px]">Seu Nicho:</label>
+                <input type="text" id="mroNichoInput" placeholder="Ex: fitness, moda, gastronomia, marketing digital..." class="flex-1 min-w-[250px] p-2 border border-gray-300 rounded-md text-gray-900 bg-white focus:ring-blue-500 focus:border-blue-500" />
+                <button id="mroPesquisarBtn" class="igBotInjectedButton px-4 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">Pesquisar</button>
+            </div>
+            <div id="mroMessageContainer" class="hidden text-red-600 mt-2 p-2 bg-red-50 border border-red-200 rounded-md"></div>
+        </div>
+        
+        <div class="mro-results-container border border-gray-200 rounded-lg overflow-hidden bg-white shadow-md">
+            <div class="mro-tabs flex flex-col">
+                <div class="mro-tab-header flex bg-gray-100 border-b border-gray-200 flex-wrap">
+                    <button class="mro-tab-btn active px-5 py-3 text-gray-700 font-medium relative transition-all duration-300 hover:bg-gray-200" data-tab="perfis">Melhores Perfis</button>
+                    <button class="mro-tab-btn px-5 py-3 text-gray-700 font-medium relative transition-all duration-300 hover:bg-gray-200" data-tab="estrategias">Estratégias</button>
+                    <button class="mro-tab-btn px-5 py-3 text-gray-700 font-medium relative transition-all duration-300 hover:bg-gray-200" data-tab="melhores-horarios">Melhores Horários</button>
+                    <button class="mro-tab-btn px-5 py-3 text-gray-700 font-medium relative transition-all duration-300 hover:bg-gray-200" data-tab="hashtags">Hashtags em Alta</button>
+                </div>
+                
+                <div class="mro-tab-content min-h-[300px] max-h-[500px] overflow-y-auto p-5">
+                    <div id="mro-perfis" class="mro-tab-pane active">
+                        <div class="mro-loading flex-col items-center justify-center py-10 hidden">
+                            <div class="mro-spinner w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                            <p class="text-gray-700">Pesquisando orientações para perfis...</p>
+                        </div>
+                        <div class="mro-perfis-content text-gray-800">
+                            <div class="mro-empty-state text-center py-10">
+                                <p class="text-gray-600">Digite seu nicho e clique em "Pesquisar" para encontrar orientações sobre os melhores perfis para interagir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="mro-estrategias" class="mro-tab-pane">
+                        <div class="mro-loading flex-col items-center justify-center py-10 hidden">
+                            <div class="mro-spinner w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                            <p class="text-gray-700">Buscando estratégias para o seu nicho...</p>
+                        </div>
+                        <div class="mro-estrategias-content flex flex-col gap-4">
+                            <div class="mro-empty-state text-center py-10">
+                                <p class="text-gray-600">Digite seu nicho e clique em "Pesquisar" para descobrir as melhores estratégias.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mro-melhores-horarios" class="mro-tab-pane">
+                        <div class="mro-loading flex-col items-center justify-center py-10 hidden">
+                            <div class="mro-spinner w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                            <p class="text-gray-700">Buscando os melhores horários para o seu nicho...</p>
+                        </div>
+                        <div class="mro-melhores-horarios-content text-gray-800">
+                            <div class="mro-empty-state text-center py-10">
+                                <p class="text-gray-600">Digite seu nicho e clique em "Pesquisar" para descobrir os melhores horários de postagem.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="mro-hashtags" class="mro-tab-pane">
+                        <div class="mro-loading flex-col items-center justify-center py-10 hidden">
+                            <div class="mro-spinner w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                            <p class="text-gray-700">Buscando hashtags em alta para o seu nicho...</p>
+                        </div>
+                        <div class="mro-hashtags-content flex flex-col gap-4">
+                            <div class="mro-empty-state text-center py-10">
+                                <p class="text-gray-600">Digite seu nicho e clique em "Pesquisar" para descobrir as hashtags em alta.</p>
+                            </div>
+                            <button id="copyHashtagsBtn" class="hidden px-4 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors duration-200 self-end mt-4">Copiar Hashtags</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+// Configuração da API DeepSeek
+const DEEPSEEK_API_KEY = "sk-a0b69b58844f4600bac4040652b71572"; // Usando a chave fornecida pelo usuário
+const DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions";
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos principais
+    const nichoInput = document.getElementById('mroNichoInput');
+    const pesquisarBtn = document.getElementById('mroPesquisarBtn');
+    const messageContainer = document.getElementById('mroMessageContainer');
+    const copyHashtagsBtn = document.getElementById('copyHashtagsBtn');
+
+    let currentHashtags = []; // Para armazenar as hashtags para copiar
+
+    // Função para mostrar/ocultar carregamento e conteúdo
+    const toggleLoading = (tabId, show) => {
+        const tabElement = document.getElementById(`mro-${tabId}`);
+        if (!tabElement) return;
+        
+        const loadingEl = tabElement.querySelector('.mro-loading');
+        const contentEl = tabElement.querySelector(`div:not(.mro-loading):not(.mro-empty-state):not(#copyHashtagsBtn)`); // Exclude copy button
+        const emptyStateEl = tabElement.querySelector('.mro-empty-state');
+
+        if (loadingEl) loadingEl.style.display = show ? 'flex' : 'none';
+        if (contentEl) contentEl.style.display = show ? 'none' : 'block';
+        if (emptyStateEl) emptyStateEl.style.display = show ? 'none' : 'block'; // Hide empty state when loading or showing content
+    };
+
+    // Função para exibir mensagens (sucesso/erro)
+    const showMessage = (message, type = 'error') => {
+        messageContainer.textContent = message;
+        messageContainer.classList.remove('hidden', 'text-red-600', 'bg-red-50', 'border-red-200', 'text-green-600', 'bg-green-50', 'border-green-200');
+        if (type === 'error') {
+            messageContainer.classList.add('text-red-600', 'bg-red-50', 'border-red-200');
+        } else {
+            messageContainer.classList.add('text-green-600', 'bg-green-50', 'border-green-200');
+        }
+        messageContainer.style.display = 'block';
+        setTimeout(() => {
+            messageContainer.style.display = 'none';
+        }, 5000);
+    };
+
+    // Função para alternar entre abas
+    const setupTabs = () => {
+        const tabButtons = document.querySelectorAll('.mro-tab-btn');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove a classe active de todos os botões e painéis
+                document.querySelectorAll('.mro-tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.style.setProperty('border-bottom', 'none'); // Remove active indicator
+                });
+                document.querySelectorAll('.mro-tab-pane').forEach(pane => {
+                    pane.classList.remove('active');
+                });
+                
+                // Adiciona a classe active ao botão e painel clicado
+                button.classList.add('active');
+                button.style.setProperty('border-bottom', '3px solid #3b82f6'); // Add active indicator
+                document.getElementById(`mro-${tabId}`).classList.add('active');
+
+                // Show/hide copy hashtags button based on active tab
+                if (tabId === 'hashtags' && currentHashtags.length > 0) {
+                    copyHashtagsBtn.classList.remove('hidden');
+                } else {
+                    copyHashtagsBtn.classList.add('hidden');
+                }
+            });
+        });
+        // Set initial active tab indicator
+        document.querySelector('.mro-tab-btn.active').style.setProperty('border-bottom', '3px solid #3b82f6');
+    };
+
+    // Configurar abas
+    setupTabs();
+
+    // Função para consultar a API da DeepSeek
+    async function consultarDeepSeek(nicho) {
+        try {
+            const prompt = `Forneça dados de marketing digital detalhados para o nicho "${nicho}" no formato JSON. Certifique-se de que todas as informações são relevantes e acionáveis para o marketing digital. Inclua as seguintes seções:
+
+1.  **"perfis"**: Uma explicação textual (string) sobre como encontrar os melhores perfis para interagir neste nicho. A explicação deve ser abrangente e incluir orientações como:
+    * Analisar os **concorrentes diretos** e seus seguidores.
+    * Identificar **micro-influenciadores** e criadores de conteúdo relevantes que se alinham com os valores do nicho.
+    * Observar a **interação e engajamento da audiência** com conteúdos específicos (comentários, compartilhamentos).
+    * Utilizar **ferramentas de análise de público** (como as do Instagram, TikTok, etc.) para entender demografia, interesses e comportamento.
+    * Buscar por **comunidades e grupos online** (Facebook, Reddit, Telegram, WhatsApp) focados no nicho.
+    * Explorar **eventos e hashtags populares** dentro do nicho para encontrar perfis ativos.
+    * A explicação deve ser fluida e informativa, sem ser uma lista de tópicos.
+
+2.  **"estrategias"**: Um array de pelo menos 8 objetos, cada um com \`titulo\` (string) e \`descricao\` (string) de estratégias de marketing digital relevantes e variadas para este nicho. Ex:
+    * \`{"titulo": "Marketing de Conteúdo de Valor", "descricao": "Crie e distribua conteúdo relevante e de alta qualidade (artigos, vídeos, infográficos, podcasts) que eduque, entretenha e resolva problemas da sua audiência, posicionando sua marca como autoridade."}\`
+    * \`{"titulo": "Engajamento Autêntico em Redes Sociais", "descricao": "Interaja genuinamente com seu público através de comentários, mensagens diretas e participação em discussões. Responda prontamente e incentive a conversa para construir uma comunidade leal."}\`
+    * Inclua uma variedade de estratégias como SEO, e-mail marketing, parcerias, anúncios pagos, etc., quando aplicável.
+
+3.  **"hashtags"**: Um array de pelo menos 10 objetos, cada um com \`nome\` (string, ex: "#fitnessmotivation") e \`posts\` (string, ex: "1.2M posts" ou "500K posts") de hashtags populares e relevantes para este nicho. Priorize hashtags que tenham volume significativo de posts mas que também permitam alcançar um público específico.
+
+4.  **"melhores_horarios"**: Uma string descrevendo os melhores horários para postar neste nicho, incluindo justificativas ou dicas para cada período do dia e da semana. A resposta deve ser detalhada e cobrir diferentes dias, se houver variações. Ex: "Os melhores horários para postar no nicho de fitness são geralmente... Durante a semana, foca em... Nos finais de semana, considere...".
+
+Retorne APENAS o JSON válido, sem marcações adicionais, comentários, texto explicativo fora do JSON, ou qualquer tipo de formatação de markdown que não seja o bloco de código JSON (ex: \`\`\`json...\`\`\`).`;
+            
+            const response = await fetch(DEEPSEEK_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "deepseek-chat",
+                    messages: [
+                        {
+                            role: "user",
+                            content: prompt
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 2000
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Erro na API DeepSeek: ${response.status} - ${errorData.message || 'Erro desconhecido'}`);
+            }
+
+            const data = await response.json();
+            const content = data.choices[0].message.content;
+            
+            // Extrair o JSON da resposta, que pode vir com markdown code block
+            const jsonMatch = content.match(/```json\n([\s\S]*?)\n```/);
+            let jsonString = content;
+            if (jsonMatch && jsonMatch[1]) {
+                jsonString = jsonMatch[1];
+            } else {
+                // Fallback for cases where it doesn't use the code block
+                const jsonStart = content.indexOf('{');
+                const jsonEnd = content.lastIndexOf('}') + 1;
+                if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
+                    jsonString = content.substring(jsonStart, jsonEnd);
+                }
+            }
+            console.log("Raw JSON string received:", jsonString); // Debugging
+            return JSON.parse(jsonString);
+            
+        } catch (error) {
+            console.error("Erro ao consultar DeepSeek:", error);
+            throw new Error(`Não foi possível obter dados da DeepSeek. Verifique sua conexão ou a chave da API. Detalhes: ${error.message}`);
+        }
+    }
+
+    // Função principal de pesquisa
+    pesquisarBtn.addEventListener('click', async function() {
+        const nicho = nichoInput.value.trim();
+        if (!nicho) {
+            showMessage('Por favor, digite um nicho para pesquisar.', 'error');
+            return;
+        }
+
+        // Limpar mensagens anteriores
+        messageContainer.style.display = 'none';
+        
+        // Ativar estados de carregamento para todas as abas e limpar conteúdo
+        ['perfis', 'estrategias', 'melhores-horarios', 'hashtags'].forEach(tab => {
+            toggleLoading(tab, true);
+            const contentContainer = document.querySelector(`#mro-${tab} .mro-${tab}-content`);
+            if (contentContainer) {
+                contentContainer.innerHTML = ''; // Clear previous results
+            }
+        });
+        
+        // Esconder o botão de copiar hashtags
+        copyHashtagsBtn.classList.add('hidden');
+        currentHashtags = []; // Reset hashtags
+
+        try {
+            // Consultar a API da DeepSeek
+            const dados = await consultarDeepSeek(nicho);
+            
+            // Renderizar os resultados
+            renderizarPerfis(dados.perfis);
+            renderizarEstrategias(dados.estrategias);
+            renderizarMelhoresHorarios(dados.melhores_horarios);
+            renderizarHashtags(dados.hashtags);
+
+            // Ativar a primeira aba (perfis) após a pesquisa
+            document.querySelector('.mro-tab-btn[data-tab="perfis"]').click();
+
+            showMessage('Pesquisa concluída com sucesso!', 'success');
+            
+        } catch (error) {
+            showMessage(`Ocorreu um erro: ${error.message}`, 'error');
+            // Limpar resultados e mostrar estado vazio em caso de erro
+            document.querySelector('#mro-perfis .mro-perfis-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
+            document.querySelector('#mro-estrategias .mro-estrategias-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
+            document.querySelector('#mro-melhores-horarios .mro-melhores-horarios-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
+            document.querySelector('#mro-hashtags .mro-hashtags-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
+        } finally {
+            // Desativar estados de carregamento para todas as abas
+            ['perfis', 'estrategias', 'melhores-horarios', 'hashtags'].forEach(tab => toggleLoading(tab, false));
+        }
+    });
+
+    // Funções de renderização
+    function renderizarPerfis(perfisTexto) {
+        const container = document.querySelector('#mro-perfis .mro-perfis-content');
+        if (!perfisTexto) {
+            container.innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Nenhuma orientação de perfis encontrada para este nicho.</p></div>';
+            return;
+        }
+        container.innerHTML = `<p class="leading-relaxed text-gray-800">${perfisTexto.replace(/\n/g, '<br>')}</p>`;
+    }
+
+    function renderizarEstrategias(estrategias) {
+        const container = document.querySelector('#mro-estrategias .mro-estrategias-content');
+        if (!estrategias || estrategias.length === 0) {
+            container.innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Nenhuma estratégia encontrada para este nicho.</p></div>';
+            return;
+        }
+        
+        container.innerHTML = estrategias.map(estrategia => `
+            <div class="mro-estrategia-item bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-200">
+                <h4 class="mro-estrategia-titulo font-bold text-lg text-gray-900 mb-2">${estrategia.titulo}</h4>
+                <p class="mro-estrategia-descricao text-gray-700 leading-relaxed">${estrategia.descricao}</p>
+            </div>
+        `).join('');
+    }
+
+    function renderizarMelhoresHorarios(horariosTexto) {
+        const container = document.querySelector('#mro-melhores-horarios .mro-melhores-horarios-content');
+        if (!horariosTexto) {
+            container.innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Nenhuma informação de melhores horários encontrada para este nicho.</p></div>';
+            return;
+        }
+        container.innerHTML = `<p class="leading-relaxed text-gray-800">${horariosTexto.replace(/\n/g, '<br>')}</p>`;
+    }
+
+    function renderizarHashtags(hashtags) {
+        const container = document.querySelector('#mro-hashtags .mro-hashtags-content');
+        if (!hashtags || hashtags.length === 0) {
+            container.innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Nenhuma hashtag encontrada para este nicho.</p></div>';
+            copyHashtagsBtn.classList.add('hidden');
+            currentHashtags = [];
+            return;
+        }
+        
+        currentHashtags = hashtags.map(h => h.nome); // Store for copying
+
+        container.innerHTML = `
+            <div class="mro-hashtags-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                ${hashtags.map(hashtag => `
+                    <div class="mro-hashtag-item bg-blue-50 border border-blue-200 rounded-md p-3 flex items-center justify-between shadow-sm">
+                        <span class="mro-hashtag-nome font-medium text-blue-800">${hashtag.nome}</span>
+                        <span class="mro-hashtag-posts text-sm text-blue-600">${hashtag.posts}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        // Show copy button if hashtags are rendered and hashtags tab is active
+        if (document.querySelector('.mro-tab-btn[data-tab="hashtags"]').classList.contains('active')) {
+            copyHashtagsBtn.classList.remove('hidden');
+        }
+    }
+
+    // Event listener for copy hashtags button
+    copyHashtagsBtn.addEventListener('click', () => {
+        if (currentHashtags.length > 0) {
+            const hashtagsToCopy = currentHashtags.join(' '); // Join with space
+            // Use document.execCommand('copy') for better compatibility in iframes/extensions
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = hashtagsToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                showMessage('Hashtags copiadas para a área de transferência!', 'success');
+            } catch (err) {
+                console.error('Falha ao copiar hashtags:', err);
+                showMessage('Erro ao copiar hashtags. Por favor, copie manualmente.', 'error');
+            } finally {
+                document.body.removeChild(tempTextArea);
+            }
+        } else {
+            showMessage('Não há hashtags para copiar.', 'error');
+        }
+    });
+});
+</script>
+
+<style>
+/* Estilos para o Assistente MRO - Combinando com Tailwind */
+.tab6 {
+    padding: 1rem; /* 15px */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8f8f8; /* Light background for the whole app */
+    color: #333; /* Default text color */
+}
+
+#mroAssistant {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* 20px */
+    max-width: 100%;
+}
+
+/* Specific styles for tab buttons active state */
+.mro-tab-btn.active {
+    background-color: #ffffff;
+    /* border-bottom handled by JS for dynamic color */
+}
+
+/* Spinner animation - already in Tailwind classes, but kept for clarity */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .mro-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .mro-input-group input {
+        width: 100%;
+    }
+    
+    .mro-tab-header {
+        flex-wrap: wrap;
+    }
+    
+    .mro-tab-btn {
+        flex: 1;
+        text-align: center;
+        padding: 0.625rem; /* 10px */
+    }
+    
+    .mro-hashtags-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+</style>

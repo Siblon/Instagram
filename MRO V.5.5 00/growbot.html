@@ -1,0 +1,616 @@
+<!--
+* Copyright (C) Growbot 2016-2023 - Todos os Direitos Reservados
+*
+* A cópia não autorizada deste arquivo, por qualquer meio, é estritamente proibida
+* Proprietário e confidencial
+* Escrito por Growbot <growbotautomator@gmail.com>, 2016-2023
+-->
+<div id="igBotInjectedContainer" class="igBotParent">
+    <div id="igBotDialog">
+        <div id="igBotDialogQuestion">O texto da pergunta vai aqui?</div>
+        <div class="igBotInjectedButton" id="btnDialogOK">OK</div>
+        <div class="igBotInjectedButton" id="btnDialogCancel">Cancelar</div>
+    </div>
+    <div id="igBotLeft">
+        <div id="igBotHeading">
+            <div style="display: flex;">
+                <h1 id="h1GrowbotHeading">MRO Inteligente V5.5™</h1>
+                <h2 id="h2FreeTrialTimeLeft"></h2> </div>
+            <div id="igBotStatusDiv">Pronto para aceitar comandos</div>
+        </div>
+        <div class="pc-tab">
+            <input checked="checked" id="tab1" type="radio" name="pct" />
+            <input id="tab2" type="radio" name="pct" />
+            <input id="tab3" type="radio" name="pct" />
+            <input id="tab4" type="radio" name="pct" />
+            <input id="tab5" type="radio" name="pct" />
+            <input id="tab6" type="radio" name="pct" />
+            <input id="tab7" type="radio" name="pct" />
+            <input id="tab8" type="radio" name="pct" />
+            <nav>
+                <ul>
+                    <li class="tab1"> <label for="tab1">Fila de Contas</label> </li>
+                    <li class="tab3"> <label for="tab3">Filtros</label> </li>
+                    <li class="tab4"> <label for="tab4">Configurações</label> </li>
+                    <li class="tab5"> <label for="tab5">Registro</label> </li>
+                    <li class="tab6"> <label for="tab6">Assistente</label> </li>
+
+                </ul>
+            </nav>
+            <section id="mainSection">
+                <div class="tab1">
+                    <div id="queueQuantityRow">
+                        <div id="pager" class="pager">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACSUlEQVR4AWSSA4xcARCGG6uxL7bdixvWbsOLa9uN+nJx3a7Otm1jVa5t276dvpm07/SSfzn/NzwAALt0VAgVrCpZnWJVRaLP9FvF3vidxoOsDr0Zit8d3HTyJb+NG0q1NqxQacLrP3QbvStW/su+yF2MwVgOsMN8uHvNwyi0Zr0vFIdkpgDFrTIpkc6D2x8B8Q+VvmnWzGAsejgAUtGs0lmS2VwR8MnkSxBJFiDMKpUr0W/JTB7WZX+S9VMGBj0EwL6wbMz83+yO5MATzYEvmkfR5yGJn4PMLon1jzp8d9GLgMrBDQcfy8YHM16qXoEbQvUu8zW+CpyhLMXorF7g9Un46EXAKfEvwwb2jKWGEghYJgBWMsCazzFyAtiDWYinixCIZqC5Z3wDvQio+qNUh3FYaA7G83CJWYbrAhXwp+z4GUUAqz9DVeSLW9DR1RNGLwF+K1QIQDPp4ttFMgimDbsAZl/mXxUFaG5t5wCnVuWajWgyB4lMEfwxBCyQwRbIYFUcwORN02aMrijw6ru4Fiq7Fk18uzsE5TLg4Cj4Co8yorAq+s3gTkOhVIYlqQYY0SQ3xIqn3cG7i2syfTiexQBufUZPGoVG/E4JTGz2r7Vt+qsiI62ROyTesIIZm1tL+iIpCoymitgvtoGrJbDRFYEv9d3J17wpOqR9p/y+S8a09Y3pJX9MYPfFaSbYs8YWhuk1BbznNelffp3Yd8ocBKm3Gmx3q+um+R+FrRs8gejv3k6YNPVtx8Q5RysnrpuaMPUGRmaiODsDAKw/CRKUFv+sAAAAAElFTkSuQmCC" class="first" />
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACXklEQVR4AWyTA4ycARCFG6uxL7Z9FzesbUe1bZ9t27Zt27b5r63X/xXnSd5yvjfY2QMAduhIMKxE2Yg6KeoGxdf8jN/tzt8OHhRl/SVb/jSraT6wpWe8sX9wWOgbGBIaOkca02qnAz+mS54yh7n/ue3woZT6Jdu+4cnRlQ05lBoDjGYLKIVaj8VVCZo7B0ajyyZtmUtmu4E14YGRKaVWZwRDozdBojRAEKXSmcBQavRoaOtVRhSP2ZIBDTgX22bl//C6XI/5DS1WpHoKS1Idplc1myZl1c2jrxJXnpKlgU1W41wg294O3/Do3AFfd2/n52CMTC8jIL0lkCwNTjZ3jzVyZrY6u67FJYd6GmBRosPkigZnvxbQgN9BrjZiTapBTGpBI1ka3OjtHxS4rFWZHhfta0TVggArn/mSL6oA19zawPfsQm80IzE5VSD7x6Cnb4AG2FAYcNOrXxd+VYIGNLzi1IjzP0px1aWF3fzrwoCYuIRNg5N17UONUqUOCo0RC4I4v2ePOEI3ZtY0BGgmqhMTy2rwlxlfkCIgInlzBJvkqonA2cUNWCwAAbZ526cPrEix9VvevRhbVMNgsqC6dQi2IUWbS7R6m7L+tKq+bVSQa8EgxOqsOL6kBkE+s8DEghR+YfGjd0PGn5LdPKSAnD7b/PJ65YpEBSZKVUawGxrxmFh5fEEC34gU5eeAYlsye07ZI7nNNj49f7SldwKzK3JwJ5x5aEZASX0fPAKiRz/6FW6e8r5/pkeRM0/tw0sCvYLjGgOCQgQfv0DBxTei8bNv1u9NTZh6AyMzUZydAcyECTzxVTE0AAAAAElFTkSuQmCC" class="prev" /> <span class="pagedisplay"></span>
+                            Página:
+                            <select class="gotoPage" title="Selecione o número da página"></select>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACWUlEQVR4AWxTA6xbYRhdrMV+se334oVzNCOabdu2qtm2zXLeatvt7V3N17N7hjve5JTf0Y8eAP5AHzU6JHRJGChhNMHP/I3//T3/O7GnhM7l1/MzrhkiStMnj95icwhmq13QvXfqL70MKJdczs3gDGd/E5DJvS5o4+vMDp8rmc2jWGmg2d0GUSjXEUvlYHxvdR1/5FvHWXJkAaqSbHX6i9VaE3wq9RZyxQYECaVaiz9JonXo3nwuHrnvpkgnKMBejE3nn2RvoozUlzqS4ne4Y2XEcjVZ5NFzo2vu2eQMcinQdU0fVjI2n0y+jmGbtCSRjLhYw5ANL2GLFBHJVsHHGUhAcdmkJJcCA40f3Xp2ZlSShm7USngJZ6yEqFCVBF6AsIaLyJebSIsVnLh4R08uBUZ/ttgELla20AAF6EiM2GqCJ17GkHUvJDzD8M0G8Hu92Y2z5y8K5H4T+GS2UgCMz64kD99iAF0pOnjtM9aS3p/yu5SigROnzsgCA1+9tevFYg2FShPsSTJdORxIVWQyDbgznqgIxZHzcoWu88+8ylAsi3YbCGWqYFySfckKiMFrnoK7woVttNp4/tqOdZp78iJ2LLiQmfFM+8Yl5KvyTpDI7WRnkrmgNPBGRew/dNo1QeOZQa58kBQ3zOtuP9YWk7nvg2KpyTQIpis8THSGJ5rDviMXissU9+WD9MdR3nn+zbrTl2+7TJ+9CCXzXBN2hj0o4IHWjJ2K464l++/KR/m/l2nq0eCMDYcfKHerT+kVKo2wd79S2LrviH7ZvmvKsUrn12FkJoqzMwDjPghf3VdFcgAAAABJRU5ErkJggg==" class="next" />
+                            <img src="data:image/png;base64,iVBS" class="last" />
+                            <select id="paginationLimit" class="pagesize" title="Selecione o tamanho da página">
+                                <option value="10">10</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                                <option value="5000">5000</option>
+                                <option value="9999999999">Todos</option>
+                            </select>
+                        </div>
+                        <div id="igBotQueueCount"></div>
+                        <div id="igBotQueueSelectedCount"></div>
+                    </div>
+              <!-- LOGO CENTRALIZADA -->
+<div style="text-align: center; margin-bottom: 20px;">
+    <a href="https://instagram.com/maisresultadosonline" target="_blank">
+        <img src="https://maisresultadosonline.com.br/wp-content/uploads/2024/08/LOGOBRANCAFRENTE.png" alt="Logo" style="max-width: 200px; height: auto;">
+    </a>
+</div>
+
+<div id="igBotQueueContainer">
+    <div class="igBotQueueContainerMessage">
+        <p>1. Esta é a <i>fila</i>. Use o botão Carregar abaixo para obter algumas contas para trabalhar. </p>
+        <p>2. <i>Opcional</i>: Você pode selecionar, remover, adicionar à lista branca, etc. usando o botão Com Seleção</p>
+        <p>3. Use o botão "Processar Fila" para começar a seguir, deixar de seguir, curtir etc.</p>
+        <p> Por favor, Veja todos os videos</p>
+        <p> Se você tiver algum problema, <b><a href="https://membros.cliquerico.com.br" target="_blank">clique aqui para acessar os tutoriais</a></b></p>
+        <br>
+    </div>
+</div>
+
+                    <div id="igBotBottom">
+                        <div id="igBotQueueContainerButtons">
+                            <div class="igBotInjectedButton flex7" id="btnLoadMenu">Carregar Contas ↑
+                                <div class="hiddenHover">
+                                    <div class="igBotInjectedButton" id="btnViewWhiteList" title="Veja sua lista branca (O MRO nunca deixará de seguir contas que você adicionou à sua lista branca)" localeMessage="LoadWhiteList">Carregar lista branca</div>
+                                    <div class="igBotInjectedButton flex7" id="btnLoadPendingRequests" title="Carrega solicitações para seguir contas privadas que ainda não foram aprovadas ou rejeitadas (estas contam para o seu total de seguindo)" localeMessage="LoadPendingFollowRequests">Carregar Solicitações de Seguir Pendentes</div>
+                                    <div class="igBotInjectedButton inactive flex7 needsMedia" id="btnLoadAccountsFromMedia" title="Carrega contas da fila de mídia">Carregar Contas da Fila de Mídia</div>
+                                    <label for="cbMediaIncludeLikersCommentersTagged"> <input type="checkbox" id="cbMediaIncludeLikersCommentersTagged"> Incluir (alguns) Curtidores, Comentadores, Usuários Marcados</label>
+                                    <div class="igBotInjectedButton inactive flex7" id="btnGetLikers" title="Carrega contas que curtiram a mídia da página atual" localeMessage="LoadLikers">Carregar Curtidores</div>
+                                    <label for="includePinnedPostForLikes"> <input type="checkbox" id="includePinnedPostForLikes"> Incluir posts fixados</label>
+                                    <div class="igBotInjectedButton inactive flex7" id="btnGetCommenters" title="Carrega contas que comentaram na mídia da página atual" localeMessage="LoadCommenters">Carregar Comentadores</div>
+                                    <label for="includePinnedPostForComments"> <input type="checkbox" id="includePinnedPostForComments"> Incluir posts fixados</label>
+                                    <div class="igBotInjectedButton inactive flex7" id="btnGetAllUsersFollowing" title="Carrega contas que a conta da página atual está seguindo para a fila" localeMessage="LoadCurrentFollowing">Carregar Seguindo da Página Atual</div>
+                                    <div class="igBotInjectedButton inactive flex7" id="btnGetAllUsersFollowers" title="Carrega os seguidores da página atual para a fila" localeMessage="LoadCurrentFollowers">Carregar Seguidores da Página Atual</div>
+                                    <div class="igBotInjectedButton flex7" id="btnLoadSavedQueue" localeMessage="LoadQueue">Carregar Fila</div>
+                                    <label for="cbLimitQueueSize" id="lblLimitQueueSize">
+                                        <input type="checkbox" checked="checked" id="cbLimitQueueSize"><span localeMessage="queueLimit">Limitar fila a</span>
+                                        <input type="number" value="200" min="1" id="txtLimitQueueSize">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="igBotInjectedButton needsQueueAccts flex7" id="btnSelectionMenu">Selecionar... ↑
+                                <div class="hiddenHover">
+                                    <div class="igBotInjectedButton needsSelectedAccts" id="btnAddToWhiteList" title="Adicionar contas selecionadas à lista de contas para NUNCA deixar de seguir" localeMessage="AddToWhitelist">Adicionar selecionados à lista branca</div>
+                                    <div class="igBotInjectedButton needsQueueAccts" id="btnInvertSelection" title="Selecionar o oposto do que está atualmente selecionado" localeMessage="InvertSelection">Inverter seleção</div>
+                                    <div class="igBotInjectedButton needsSelectedAccts" id="btnSelectNone" title="Não selecionar nada" localeMessage="SelectNone">Selecionar Nenhum</div>
+                                    <div class="igBotInjectedButton needsQueueAccts" id="btnSelectAll" title="Selecionar todas as contas mostradas" localeMessage="SelectAll">Selecionar Todos</div>
+                                    <div class="igBotInjectedButton needsSelectedAccts" id="btnRemoveSelected" title="Remover todas as contas selecionadas" localeMessage="RemoveSelected">Remover selecionados</div>
+                                </div>
+                            </div>
+                            <div id="btnProcessQueueHolder" class="igBotInjectedButton">
+                                <div class="igBotInjectedButton needsQueueAccts" id="btnProcessQueue" localeMessage="ProcessQueue">Processar Fila ↑</div>
+                                <div class="hiddenHover">
+                                    <div class="processQueueRadioButtons">
+                                        <label for="radioFollow">
+                                            <input type="radio" id="radioFollow" name="queueAction" value="radioFollow" checked /> <span localeMessage="Follow">Seguir</span>
+                                        </label>
+                                        <label for="radioFollowAndLike" title="Curtir as postagens recentes da conta ao seguir.">
+<input type="radio" id="radioFollowAndLike" name="queueAction" value="radioFollowAndLike" /> 
+<span>Seguir + Curtir </span>
+<input type="number" value="3" step="1" min="0" max="12" id="numberFollowLikeLatestPics" style="color: black;">
+                                            <span>Foto(s)</span>
+                                        </label>
+                                        <label for="radioLikeOnly" title="Apenas curtir as postagens recentes da conta. Usa o mesmo número da caixa acima.">
+                                            <input type="radio" id="radioLikeOnly" name="queueAction" value="radioNone" /> <span localeMessage="LikeOnly">Apenas Curtir</span>
+                                        </label>
+                                        <label for="radioUnFollow">
+                                            <input type="radio" id="radioUnFollow" name="queueAction" value="radioUnFollow" /> <span localeMessage="Unfollow">Deixar de Seguir</span>
+                                        </label>
+                                        <label for="radioRemoveFromFollowers">
+                                            <input type="radio" id="radioRemoveFromFollowers" name="queueAction" value="radioRemoveFromFollowers" /> <span localeMessage="RemoveFromFollowers">Remover Seguidor</span>
+                                        </label>
+                                        <label for="radioBlock">
+                                            <input type="radio" id="radioBlock" name="queueAction" value="radioBlock" /> <span localeMessage="Block">Bloquear</span>
+                                        </label>
+                                        <label for="radioViewStory" title="Ver a(s) história(s) de cada conta">
+                                            <input type="radio" id="radioViewStory" name="queueAction" value="radioViewStory" /> Ver História (abre e fecha nova aba para cada)
+                                        </label>
+                                        <label for="cbViewStoryLike" style="padding-left:30px;" title="Curtir a história visualizada ao mesmo tempo">
+                                            <input type="checkbox" id="cbViewStoryLike" checked="checked" /> Curtir história ao visualizar
+                                        </label>
+                                        <label for="radioGetMoreData" title="Obtém mais dados sobre cada conta na fila: Status Privado, Seguidores, Seguindo, Contagem de Posts, etc">
+                                            <input type="radio" id="radioGetMoreData" name="queueAction" value="radioGetMoreData">
+                                            <span localeMessage="GetMoreData">Obter Mais Dados</span>
+                                        </label>
+                                        <label for="cbGetLastPostDate" style="padding-left:30px;" title="Obter a data da última postagem do usuário (requer 1 conexão API adicional ao servidor do Instagram)">
+                                            <input type="checkbox" id="cbGetLastPostDate">
+                                            <span localeMessage="GetLastPostDate">Obter Data da Última Postagem / Legendas por Idioma</span>
+                                        </label>
+                                        <label for="cbGetExtendedData" style="padding-left:30px;" title="Obter ainda mais dados sobre cada conta: Email Público, Telefone Público, Endereço, etc (requer 1 conexão API adicional ao servidor do Instagram)">
+                                            <input type="checkbox" id="cbGetExtendedData">
+                                            <span localeMessage="GetExtendedData">Obter Dados Estendidos</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="igBotInjectedButton needsQueueAccts flex7" id="btnSaveQueueToStorage" localeMessage="SaveQueue">Salvar Fila</div>
+                            <div class="igBotInjectedButton needsQueueAccts flex7" id="btnExportQueue" localeMessage="ExportQueue">Exportar Fila (CSV)</div>
+                            <div class="igBotInjectedButton needsWhitelistAccts" id="btnSaveWhiteList" title="Salva a lista branca no armazenamento local e/ou disco" localeMessage="SaveWhiteList">Salvar lista branca</div>
+                            <div class="igBotInjectedButton inactive" id="btnStop" localeMessage="Stop">Parar!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab2">
+                    <div id="mediaqueueQuantityRow">
+                        <div id="mediapager" class="mediapager">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACSUlEQVR4AWSSA4xcARCGG6uxL7bdixvWbsOLa9uN+nJx3a7Otm1jVa5t276dvpm07/SSfzn/NzwAALt0VAgVrCpZnWJVRaLP9FvF3vidxoOsDr0Zit8d3HTyJb+NG0q1NqxQacLrP3QbvStW/su+yF2MwVgOsMN8uHvNwyi0Zr0vFIdkpgDFrTIpkc6D2x8B8Q+VvmnWzGAsejgAUtGs0lmS2VwR8MnkSxBJFiDMKpUr0W/JTB7WZX+S9VMGBj0EwL6wbMz83+yO5MATzYEvmkfR5yGJn4PMLon1jzp8d9GLgMrBDQcfy8YHM16qXoEbQvUu8zW+CpyhLMXorF7g9Un46EXAKfEvwwb2jKWGEghYJgBWMsCazzFyAtiDWYinixCIZqC5Z3wDvQio+qNUh3FYaA7G83CJWYbrAhXwp+z4GUUAqz9DVeSLW9DR1RNGLwF+K1QIQDPp4ttFMgimDbsAZl/mXxUFaG5t5wCnVuWajWgyB4lMEfwxBCyQwRbIYFUcwORN02aMrijw6ru4Fiq7Fk18uzsE5TLg4Cj4Co8yorAq+s3gTkOhVIYlqQYY0SQ3xIqn3cG7i2syfTiexQBufUZPGoVG/E4JTGz2r7Vt+qsiI62ROyTesIIZm1tL+iIpCoymitgvtoGrJbDRFYEv9d3J17wpNqR9p/y+S8a09Y3pJX9MYPfFaSbYs8YWhuk1BbznNelffp3Yd8ocBKm3Gmx3q+um+R+FrRs8gejv3k6YNPVtx8Q5RysnrpuaMPUGRmaiODsDAKw/CRKUFv+sAAAAAElFTkSuQmCC" class="first" />
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACXklEQVR4AWyTA4ycARCFG6uxL7Z9FzesbUe1bZ9t27Zt27b5r63X/xXnSd5yvjfY2QMAduhIMKxE2Yg6KeoGxdf8jN/tzt8OHhRl/SVb/jSraT6wpWe8sX9wWOgbGBIaOkca02qnAz+mS54yh7n/ue3woZT6Jdu+4cnRlQ05lBoDjGYLKIVaj8VVCZo7B0ajyyZtmUtmu4E14YGRKaVWZwRDozdBojRAEKXSmcBQavRoaOtVRhSP2ZIBDTgX22bl//C6XI/5DS1WpHoKS1Idplc1myZl1c2jrxJXnpKlgU1W41wg294O3/Do3AFfd2/n52CMTC8jIL0lkCwNTjZ3jzVyZrY6u67FJYd6GmBRosPkigZnvxbQgN9BrjZiTapBTGpBI1ka3OjtHxS4rFWZHhfta0TVggArn/mSL6oA19zawPfsQm80IzE5VSD7x6Cnb4AG2FAYcNOrXxd+VYIGNLzi1IjzP0px1aWF3fzrwoCYuIRNg5N17UONUqUOCo0RC4I4v2ePOEI3ZtY0BGgmqhMTy2rwlxlfkCIgInlzBJvkqonA2cUNWCwAAbZ526cPrEix9VvevRhbVMNgsqC6dQi2IUWbS7R6m7L+tKq+bVSQa8EgxOqsOL6kBkE+s8DEghR+YfGjd0PGn5LdPKSAnD7b/PJ65YpEBSZKVUawGxrxmFh5fEEC34gU5eeAYlsye07ZI7nNNj49f7SldwKzK3JwJ5x5aEZASX0fPAKiRz/6FW6e8r5/pkeRM0/tw0sCvYLjGgOCQgQfv0DBxTei8bNv1u9NTZh6AyMzUZydAcyECTzxVTE0AAAAAElFTkSuQmCC" class="prev" /> <span class="pagedisplay"></span>
+                            Página:
+                            <select class="gotoPage" title="Selecione o número da página"></select>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACWUlEQVR4AWxTA6xbYRhdrMV+se334oVzNCOabdu2qtm2zXLeatvt7V3N17N7hjve5JTf0Y8eAP5AHzU6JHRJGChhNMHP/I3//T3/O7GnhM7l1/MzrhkiStMnj95icwhmq13QvXfqL70MKJdczs3gDGd/E5DJvS5o4+vMDp8rmc2jWGmg2d0GUSjXEUvlYHxvdR1/5FvHWXJkAaqSbHX6i9VaE3wq9RZyxQYECaVaiz9JonXo3nwuHrnvpkgnKMBejE3nn2RvoozUlzqS4ne4Y2XEcjVZ5NFzo2vu2eQMcinQdU0fVjI2n0y+jmGbtCSRjLhYw5ANL2GLFBHJVsHHGUhAcdmkJJcCA40f3Xp2ZlSShm7USngJZ6yEqFCVBF6AsIaLyJebSIsVnLh4R08uBUZ/ttgELla20AAF6EiM2GqCJ17GkHUvJDzD8M0G8Hu92Y2z5y8K5H4T+GS2UgCMz64kD99iAF0pOnjtM9aS3p/yu5SigROnzsgCA1+9tevFYg2FShPsSTJdORxIVWQyDbgznqgIxZHzcoWu88+8ylAsi3YbCGWqYFySfckKiMFrnoK7woVttNp4/tqOdZp78iJ2LLiQmfFM+8Yl5KvyTpDI7WRnkrmgNPBGRew/dNo1QeOZQa58kBQ3zOtuP9YWk7nvg2KpyTQIpis8THSGJ5rDviMXissU9+WD9MdR3nn+zbrTl2+7TJ+9CCXzXBN2hj0o4IHWjJ2K464l++/KR/m/l2nq0eCMDYcfKHerT+kVKo2wd79S2LrviH7ZvmvKsUrn12FkJoqzMwDjPghf3VdFcgAAAABJRU5ErkJggg==" class="next" />
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACXElEQVR4AWRTA4wcYRi9WI19se3buGEd1Yhr241qu7M427a5PNs2Z229zjtjkrf8nn6EANiBg0qESpBJOCbhArH+Wcb/ds9vJ+6TEPYq13I7RzctN3QMa7t7+8Wunj5R0zqgzagflz/PNN7mDGe3C2yQ96ep59509Y8OLqxYYHN64QsECVgdHswuGqFv7RmMrRh9w1lytguEkdwzMGZzuX3g4/T4YbR5IUqwu/0AIIl6oGnqtEWVDlEkDBRgL8am8wa5sHkJi2YPFkxrmDO5MWn/AWRTA4wcYRi9WI19se3buGEd1Yhr241qu7M427a5PNs2Z229zjtjkrf8nn6EANiBg0qESpBJOCbhArH+Wcb/ds9vJ+6TEPYq13I7RzctN3QMa7t7+8Wunj5R0zqgzagflz/PNN7mDGe3C2yQ96ep59509Y8OLqxYYHN64QsECVgdHswuGqFv7RmMrRh9w1lytguEkdwzMGZzuX3g4/T4YbR5IUqwu/0AIIl6oGnqtEWVDlEkDBRgL8am8wa5sHkJi2YPFkxrmDO5MWj" class="last" />
+                            <select id="mediapaginationLimit" class="pagesize" title="Selecione o tamanho da página">
+                                <option value="10">10</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                                <option value="5000">5000</option>
+                                <option value="9999999999">Todos</option>
+                            </select>
+                        </div>
+                        <div id="igBotmediaQueueCount"></div>
+                        <div id="igBotmediaQueueSelectedCount"></div>
+                    </div>
+                    <div id="igBotMediaQueueContainer"></div>
+                    <div id="igBotMediaButtonContainer">
+                        <div class="igBotInjectedButton flex7" id="btnLoadMenu">Carregar Mídia ↑
+                            <div class="hiddenHover">
+                                <div class="igBotInjectedButton inactive" id="btnLoadThisPost">Carregar Esta Postagem</div>
+                                <div class="igBotInjectedButton inactive" id="btnLikeHashtag">Carregar Postagens de #hashtag</div>
+                                <div class="igBotInjectedButton" id="btnLikeFeed">Carregar Postagens do Feed</div>
+                                <label for="includeSuggestedPostsFromFeed"> <input type="checkbox" id="includeSuggestedPostsFromFeed" checked="checked"> Incluir Postagens Sugeridas</label>
+                                <div class="igBotInjectedButton inactive flex7" id="btnLoadLocationPosts" title="Carrega postagens com a localização atual para a fila de mídia">Carregar Postagens da Página de Localização</div>
+                                <div class="igBotInjectedButton flex7" id="btnLoadSavedMediaQueue" style="display: none;">Carregar Fila de Mídia</div>
+                                <label for="cbLimitQueueSize" id="lblLimitMediaQueueSize">
+                                    <input type="checkbox" checked="checked" id="cbLimitMediaQueueSize"><span localeMessage="queueLimit">Limitar fila a</span>
+                                    <input type="number" value="50" min="1" id="txtLimitMediaQueueSize">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="igBotInjectedButton needsMedia flex7" id="btnMediaSelectionMenu">Selecionar... ↑
+                            <div class="hiddenHover">
+                                <div class="igBotInjectedButton needsMedia" id="btnMediaInvertSelection" title="Selecionar o oposto do que está atualmente selecionado" localeMessage="InvertSelection">Inverter seleção</div>
+                                <div class="igBotInjectedButton needsSelectedMedia" id="btnMediaSelectNone" title="Não selecionar nada" localeMessage="SelectNone">Selecionar Nenhum</div>
+                                <div class="igBotInjectedButton needsMedia" id="btnMediaSelectAll" title="Selecionar todas as mídias mostradas" localeMessage="SelectAll">Selecionar Todos</div>
+                                <div class="igBotInjectedButton needsSelectedMedia" id="btnMediaRemoveSelected" title="Remover todas as mídias selecionadas" localeMessage="RemoveSelected">Remover selecionados</div>
+                            </div>
+                        </div>
+                        <div class="igBotInjectedButton" id="btnLikeMediaQueue">Curtir Postagens da Fila de Mídia</div>
+                        <div class="igBotInjectedButton" id="btnWatchReels" title="Abrirá uma nova aba para cada reel, esperará até que o vídeo seja reproduzido e fechará a aba">Assistir Reels (BETA)</div>
+                        <div style="display: flex; flex-direction: column; justify-content: center; padding-right: 10px;">
+                            <label for="LikeWhenWatchingReel" title="Clicar em Curtir após assistir 75% do reel"><input type="checkbox" id="LikeWhenWatchingReel" checked="checked" />Curtir ao Assistir</label>
+                            <label for="SaveWhenWatchingReel" title="Clicar em Salvar após assistir 75% do reel"><input type="checkbox" id="SaveWhenWatchingReel" checked="checked" />Salvar ao Assistir</label>
+                        </div>
+                        <div class="igBotInjectedButton inactive" id="btnStop2" localeMessage="Stop">Parar!</div>
+                    </div>
+                </div>
+                <div class="tab8">
+                    <div>
+                        <h3>Ações Agendadas</h3>
+                        <p>*Recurso BETA* - mais ações em breve!</p>
+                        <p>Observação, você deve deixar apenas uma aba do Instagram aberta para que isso funcione corretamente</p>
+                        <table id="tblScheduledActions">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Função</th>
+                                    <th>Data/Hora</th>
+                                    <th>Última Execução</th>
+                                    <th>Executar Diariamente</th>
+                                    <th>Remover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <h5 id="currentTime">Hora Atual: </h5>
+                        <div class="schedule-row">
+                            <select id="scheduled_action_function_name">
+                                <option value="ajaxLikeAllPostsFromFeed">Carregar Postagens do Feed</option>
+                                <option value="watchReels">Assistir Reels</option>
+                                <option value="likeAllMedia">Curtir Postagens da Fila de Mídia</option>
+                            </select>
+                            <input type="datetime-local" id="scheduled_action_scheduled_time">
+                            <label for="scheduled_action_repeat">
+                                <input type="checkbox" id="scheduled_action_repeat">
+                                Repetir Diariamente
+                            </label>
+                            <span class="plus-sign" id="btnAddScheduledAction">&plus;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab3">
+                    <div id="multiFilter">
+                        <h3 localeMessage="AccountFilters">Filtros de Conta</h3>
+                        <div localeMessage="AccountFiltersHint">Você pode habilitar a aplicação automática de filtros ao seguir ou deixar de seguir nas configurações. Isso é recomendado para eficiência e para evitar limites de taxa.</div>
+                        <div id="sliders">
+                            <span localeMessage="Followers">Seguidores</span>
+                            <div id="followersSlider"></div>
+                            <span localeMessage="Following">Seguindo</span>
+                            <div id="followingSlider"></div>
+                            <span localeMessage="FollowRatio">Proporção de Seguir</span>
+                            <div id="followRatioSlider"></div>
+                            <span localeMessage="MutualFollowedBy">Seguido Mutuamente Por (Seguidores em Comum)</span>
+                            <div id="mutualFollowedBySlider"></div>
+                            <span localeMessage="Posts">Postagens</span>
+                            <div id="postsSlider"></div>
+                            <span localeMessage="LastPosted">Última Postagem (dias atrás) Nota: O MRO não pode saber quando uma conta privada postou pela última vez, então este filtro não se aplica a contas privadas.</span>
+                            <div id="lastPostedSlider"></div>
+                        </div>
+                        <label for="cbFilterNoProfilePic" id="lblFilterNoProfilePic">
+                            <input type="checkbox" id="cbFilterNoProfilePic" checked="checked" /> <span localeMessage="HasNoProfilePicture">Não Tem Foto de Perfil</span>
+                        </label>
+                        <label for="cbFilterProfilePic" id="lblFilterProfilePic">
+                            <input type="checkbox" id="cbFilterProfilePic" checked="checked" /> <span localeMessage="HasProfilePicture">Tem Foto de Perfil</span>
+                        </label>
+                        <label for="cbFilterJoinedRecently">
+                            <input type="checkbox" id="cbFilterJoinedRecently" checked="checked" /> <span localeMessage="JoinedRecentlyAccounts">Contas que Entraram Recentemente</span>
+                        </label>
+                        <label for="cbFilterNonJoinedRecently">
+                            <input type="checkbox" id="cbFilterNonJoinedRecently" checked="checked" /> <span localeMessage="NonJoinedRecentlyAccounts">Contas que Não Entraram Recentemente</span>
+                        </label>
+                        <label for="cbFollowPrivateAccounts" id="lblFollowPrivateAccounts">
+                            <input type="checkbox" id="cbFollowPrivateAccounts" checked="checked" /> <span localeMessage="PrivateAccounts">Contas Privadas</span>
+                        </label>
+                        <label for="cbFilterNonPrivate">
+                            <input type="checkbox" id="cbFilterNonPrivate" checked="checked" /> <span localeMessage="PublicAccounts">Contas Públicas</span>
+                        </label>
+                        <label for="cbFilterVerified">
+                            <input type="checkbox" id="cbFilterVerified" checked="checked" /> <span localeMessage="VerifiedAccounts">Contas Verificadas</span>
+                        </label>
+                        <label for="cbFilterNonVerified">
+                            <input type="checkbox" id="cbFilterNonVerified" checked="checked" /> <span localeMessage="NonVerifiedAccounts">Contas Não Verificadas</span>
+                        </label>
+                        <br>
+                        <br>
+                        <label for="cbFilterExternalUrlContains">
+                            <input type="checkbox" id="cbFilterExternalUrlContains" />
+                            <span localeMessage="ExternalUrlContainsText">Link na Bio Contém</span>
+                            <input type="text" id="txtFilterExternalUrlContains" placeholder="youtube.com">
+                        </label>
+                        <label for="cbFilterExternalUrlNotContains">
+                            <input type="checkbox" id="cbFilterExternalUrlNotContains" />
+                            <span localeMessage="ExternalUrlNotContainsText">Link na Bio Não Contém</span>
+                            <input type="text" id="txtFilterExternalUrlNotContains" placeholder="onlyfans.com">
+                        </label>
+                        <label for="cbFilterBioContains">
+                            <input type="checkbox" id="cbFilterBioContains" />
+                            <span localeMessage="BioContainsText">Bio Contém Texto</span>
+                            <input type="text" id="txtFilterBioContains">
+                        </label>
+                        <label for="cbFilterBioNotContains">
+                            <input type="checkbox" id="cbFilterBioNotContains" />
+                            <span localeMessage="BioNotContainsText">Bio Não Contém Texto</span>
+                            <input type="text" id="txtFilterBioNotContains">
+                        </label>
+                        <label for="cbFilterBusiness" id="lblFilterBusiness">
+                            <input type="checkbox" id="cbFilterBusiness" checked="checked" /> <span localeMessage="BusinessAccounts">Contas Comerciais</span>
+                        </label>
+                        <label for="cbFilterNonBusiness">
+                            <input type="checkbox" id="cbFilterNonBusiness" checked="checked" /> <span localeMessage="NonBusinessAccounts">Contas Não Comerciais</span>
+                        </label>
+                        <label for="cbFilterBusinessCategoryNameContains">
+                            <input type="checkbox" id="cbFilterBusinessCategoryNameContains" />
+                            <span localeMessage="BusinessCategoryNameContainsText">Categoria Comercial Contém Texto</span>
+                            <input type="text" id="txtFilterBusinessCategoryNameContains" />
+                        </label>
+                        <label for="cbFilterBusinessCategoryNameNotContains">
+                            <input type="checkbox" id="cbFilterBusinessCategoryNameNotContains" />
+                            <span localeMessage="BusinessCategoryNameNotContainsText">Categoria Comercial Não Contém Texto</span>
+                            <input type="text" id="txtFilterBusinessCategoryNameNotContains">
+                        </label>
+                        <br>
+                        <br>
+                        <div localeMessage="BelowFiltersApply">Os filtros abaixo aplicam-se apenas ao seguir (não ao deixar de seguir):</div>
+                        <br>
+                        <br>
+                        <label for="cbFollowsMe">
+                            <input type="checkbox" id="cbFollowsMe" /> <span localeMessage="FollowsMe">Me Segue</span>
+                        </label>
+                        <label for="cbNonFollowsMe">
+                            <input type="checkbox" id="cbNonFollowsMe" checked="checked" /> <span localeMessage="DoesntFollowMe">Não Me Segue</span>
+                        </label>
+                        <label for="cbFollowedByMe">
+                            <input type="checkbox" id="cbFollowedByMe" /> <span localeMessage="FollowedByMe">Seguido por Mim</span>
+                        </label>
+                        <label for="cbNonFollowedByMe">
+                            <input type="checkbox" id="cbNonFollowedByMe" checked="checked" /> <span localeMessage="NotFollowedByMe">Não Seguido por Mim</span>
+                        </label>
+                        <br>
+                        <br>
+                        <div class="igBotInjectedButton" id="btnResetFilter" localeMessage="ResetFilters">Redefinir Filtros</div>
+                        <div class="igBotInjectedButton" id="btnApplyFilter" localeMessage="ApplyFilters">Aplicar Filtros à Fila Atual</div>
+                    </div>
+                </div>
+                <div class="tab4">
+                    <div id="igBotOptions">
+                        <h3 localeMessage="Settings">Configurações</h3>
+                        <details id="relinkSubscription">
+                            <summary localeMessage="relinkSubscription">Revincular Assinatura</summary>
+                            <br>
+                            <form id="formRelinkSubscription">
+                                <input type="text" id="email" name="email" placeholder="email@endereco.com" style="border:1px solid #666;"></input>
+                                <input type="text" id="last4" name="last4" placeholder="Últimos 4 dígitos do cartão" maxlength="4" style="border:1px solid #666;"></input>
+                                <select id="month" name="month">
+                                    <option>Mês de Validade do Cartão</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select id="year" name="year">
+                                    <option>Ano de Validade do Cartão</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                    <option value="2031">2031</option>
+                                    <option value="2032">2032</option>
+                                    <option value="2033">2033</option>
+                                    <option value="2034">2034</option>
+                                    <option value="2035">2035</option>
+                                    <option value="2036">2036</option>
+                                </select>
+                            </form>
+                            <br>
+                            <button id="btnFindSubscription">Encontrar Assinatura</button>
+                            <br>
+                            <div id="resultFindSubscription"></div>
+                            <br>
+                        </details>
+                        <details id="detailsPerformanceOptions">
+                            <summary localeMessage="PerformanceOptions">Opções de Desempenho</summary>
+                            <div class="followOptions">
+                                <label for="cbShowStamps">
+                                    <input type="checkbox" checked="checked" id="cbShowStamps" /> <span localeMessage="cbShowStamps">Mostrar carimbos na fila</span>
+                                </label>
+                                <label for="cbRemoveFromQueue" style="display:none;">
+                                    <input type="checkbox" id="cbRemoveFromQueue" /> <span localeMessage="cbRemoveFromQueue">Remover contas da fila após o processamento</span>
+                                </label>
+                                <label for="cbConvenienceLinks">
+                                    <input type="checkbox" checked="checked" id="cbConvenienceLinks" /> <span localeMessage="cbConvenienceLinks">Mostrar botões de conveniência no feed (Lista Branca/Deixar de Seguir)</span>
+                                </label>
+                                <label for="cbShowQueueOnScreen">
+                                    <input type="checkbox" checked="checked" id="cbShowQueueOnScreen" /> <span localeMessage="cbShowQueueOnScreen">Mostrar fila na tela</span>
+                                </label>
+                                <label for="cbRemoveUnusedColumns">
+                                    <input type="checkbox" checked="checked" id="cbRemoveUnusedColumns" /> <span>Remover Colunas Não Marcadas dos Dados da Fila</span>
+                                </label>
+                                <label for="cbShowLikesInQueue">
+                                    <input type="checkbox" checked="checked" id="cbShowLikesInQueue" /> <span localeMessage="cbShowLikesInQueue">Mostrar curtidas na fila</span>
+                                </label>
+                                <label for="cbShowProfilePicInQueue">
+                                    <input type="checkbox" checked="checked" id="cbShowProfilePicInQueue" /> <span localeMessage="cbShowProfilePicInQueue">Mostrar fotos de perfil na fila</span>
+                                </label>
+                                <label for="cbClickNotNow">
+                                    <input type="checkbox" id="cbClickNotNow" /><span localeMessage="cbClickNotNow">Clicar em "Agora Não" quando o Instagram perguntar para mostrar notificações ou Salvar Conta</span>
+                                </label>
+                                <label for="cbLoadQueueOnStartup">
+                                    <input type="checkbox" id="cbLoadQueueOnStartup" /><span localeMessage="cbLoadQueueOnStartup">Carregar a última fila conhecida ao iniciar</span>
+                                </label>
+                            </div>
+                        </details>
+                        <details id="detailsWaitTime">
+                            <summary localeMessage="ConfigureWaitTimes">Configurar Tempos de Espera</summary>
+                            <div class="followOptions">
+                                <span><span localeMessage="Wait">Esperar</span> <input type="number" value="180" step="1" min="0" id="textSecondsBetweenActions"></input> <span localeMessage="secondsAfterAction">segundos após seguir/deixar de seguir/curtir</span></span>
+                                <span><span localeMessage="Wait">Esperar</span> <input type="number" value="1" step="1" min="0" id="textSecondsAfterSkip"></input> <span localeMessage="secondsAfterSkip">segundos após pular</span></span>
+                                <label for="cbRandomizeTimeDelay">
+                                    <input type="checkbox" checked="checked" id="cbRandomizeTimeDelay" /><span localeMessage="randomizeWaitTime">Randomizar tempo de espera em até</span>
+                                    <input type="number" value="70" step="1" min="0" id="igBotPercentRandomTimeDelay"></input>%
+                                </label>
+                                <span><span localeMessage="Retry">Tentar novamente</span> <input type="number" value="10" step="1" id="textMinutesAfterSoftRateLimit"></input> <span localeMessage="minutesAfterSoft">minutos após limite de taxa suave</span></span>
+                                <span><span localeMessage="Retry">Tentar novamente</span> <input type="number" min="1" value="1" step="1" id="textHoursAfterHardRateLimit"></input> <span localeMessage="hoursAfterHard">horas após limite de taxa rígido</span></span>
+                                <span><span localeMessage="Retry">Tentar novamente</span> <input type="number" value="10" step="1" id="textMinutesAfter429RateLimit"></input> <span localeMessage="minutesAfter429">minutos após limite de taxa 429</span></span>
+                                <span>
+                                    <input type="checkbox" checked="checked" id="cbuseTimeDelayAfterAdditionalInfo" />
+                                    <span localeMessage="Wait">Esperar</span> <input type="number" value="7" step="1" id="texttimeDelayAfterAdditionalInfo"></input> <span localeMessage="SecondsAfterAdditionalInfo">segundos após carregar informações adicionais da conta</span>
+                                </span>
+                                <span>
+                                    <span localeMessage="Retry">Tentar novamente</span> <input type="number" value="10" step="1" id="textRetryAfterAdditionalInfo404"></input> <span localeMessage="RetryAfterAdditionalInfo404"> vezes após erro 404 ao obter informações adicionais</span>
+                                </span>
+                                <span>
+                                    <input type="checkbox" checked="checked" id="cbLimitActions" /> <span localeMessage="Wait">Esperar</span> <input type="number" value="0.40" step="1" id="textLimitActionsPerTime"> <span localeMessage="hoursAfterActions">horas após realizar</span> <input type="number" value="20" step="1" id="textLimitActionsPer"></input> <span localeMessage="followsUnfollows">seguidas / deixadas de seguir</span>
+                                </span>
+                            </div>
+                        </details>
+                        <details id="detailsProcessingQueueOptions">
+                            <summary localeMessage="QueueProcessingOptions">Opções de Processamento da Fila</summary>
+                            <div class="followOptions">
+                                <label for="cbAutoSaveQueue">
+                                    <input type="checkbox" id="cbAutoSaveQueue" /> <span localeMessage="saveQueueAutomatically">Salvar fila automaticamente (no armazenamento local) após cada conta processada</span>
+                                </label>
+                            </div>
+                        </details>
+                        <details id="detailsFollowingOptions">
+                            <summary localeMessage="FollowingOptions">Opções de Seguir</summary>
+                            <div class="followOptions">
+                                <label for="cbFollowAlreadyAttempted">
+                                    <input type="checkbox" id="cbFollowAlreadyAttempted" /> <span localeMessage="followAlreadyAttempted">Seguir pessoas que já tentei</span>
+                                </label>
+                                <label for="cbApplyFilterAutomatically" title="Aplicar os filtros atualmente selecionados automaticamente a partir de agora">
+                                    <input type="checkbox" id="cbApplyFilterAutomatically" /> <span localeMessage="applyFiltersAutomatically">Aplicar Filtros Automaticamente ao Seguir</span>
+                                </label>
+                            </div>
+                        </details>
+                        <details id="detailsUnfollowingOptions">
+                            <summary localeMessage="UnfollowingOptions">Opções de Deixar de Seguir</summary>
+                            <div class="followOptions">
+                                <label for="cbDontUnfollowFollowers">
+                                    <input type="checkbox" checked="checked" id="cbDontUnfollowFollowers" /> <span localeMessage="dontUnfollowFollowers">Não deixar de seguir pessoas que me seguem</span>
+                                </label>
+                                <label for="cbUnfollowOld">
+                                    <input type="checkbox" id="cbUnfollowOld" /> <span localeMessage="unfollowDaysAgo1">Deixar de seguir pessoas que comecei a seguir há mais de</span>
+                                    <input type="number" value="30" step="1" id="textUnfollowOld"></input> <span localeMessage="unfollowDaysAgo2">dias (mesmo que me sigam)</span>
+                                </label>
+                                <label for="cbDontUnfollowFresh">
+                                    <input type="checkbox" id="cbDontUnfollowFresh" /> <span localeMessage="dontUnfollowDaysAgo1">Não deixar de seguir pessoas que comecei a seguir há menos de</span>
+                                    <input type="number" value="3" step="1" id="textUnfollowNew"></input> <span localeMessage="dontUnfollowDaysAgo2">dias</span>
+                                </label>
+                                <label for="cbDontUnfollowNonGrowbot">
+                                    <input type="checkbox" id="cbDontUnfollowNonGrowbot" /> <span localeMessage="dontUnfollowNonGrowbot">Não deixar de seguir pessoas seguidas fora do MRO</span>
+                                </label>
+                                <label for="cbDontUnfollowFilters">
+                                    <input type="checkbox" id="cbDontUnfollowFilters" /> <span localeMessage="dontUnfollowFilters">Não deixar de seguir pessoas que correspondem aos meus filtros</span>
+                                </label>
+                            </div>
+                        </details>
+                        <details id="detailsUnfollowingOptions"> <summary localeMessage="RemovingAndBlockingOptions">Opções de Remoção e Bloqueio</summary>
+                            <div class="followOptions">
+                                <label for="cbDontRemoveOrBlockFilters">
+                                    <input type="checkbox" id="cbDontRemoveOrBlockFilters" /> <span localeMessage="dontRemoveOrBlockFilters">Não remover ou bloquear pessoas que correspondem aos meus filtros</span>
+                                </label>
+                            </div>
+                        </details>
+                        <details id="detailsQueueColumns">
+                            <summary localeMessage="QueueColumnsOptions">Colunas para Mostrar na Fila e Exportação CSV *BETA*</summary>
+                            <div class="followOptions" id="queueColumnsOptions"></div>
+                        </details>
+                    </div>
+                </div>
+                <div class="tab5">
+                    <div id="igBotLog">
+                        <h3 localeMessage="Log">Registro</h3>
+                        <textarea id="txtConsole" spellcheck="false"></textarea>
+                        <br>
+                        <a href="javascript:void(0);" id="btnTrimLog">Aparar Registro</a>
+                    </div>
+                </div>
+<div class="tab6">
+    <style>
+        /* Estilos para o iframe */
+        .mro-iframe-container {
+            width: 100%;
+            height: 800px; /* Altura ajustável conforme necessidade */
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mro-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .iframe-info {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
+    <div class="mro-iframe-container">
+        <iframe class="mro-iframe" 
+                src="https://maisresultadosonline.com.br/ia/index.html" 
+                frameborder="0" 
+                allowfullscreen 
+                allow="clipboard-write">
+        </iframe>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleciona automaticamente a tab6 quando a página é carregada
+        const tab6Input = document.getElementById('tab6');
+        if (tab6Input) {
+            tab6Input.checked = true;
+        }
+    });
+</script>
+
+
+
+<div style="background-color: #000; display: flex; justify-content: center; align-items: center;">
+    <div style="text-align: center; color: white; max-width: 600px;">
+        <div id="divEntrarId" style="background-color: #222; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+           
+            <div id="boxCadastro" style="margin-bottom: 20px;">
+                <h2 style="color: white;">Nome Sobrenome:</h2>
+                <input type="text" id="nameUser" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+                <h2 style="color: white;">Senha:</h2>
+                <input type="password" id="myId" name="myId" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+                <h2 style="color: white;">Confirmar Senha:</h2>
+                <input type="password" id="comfirEntrarIdApp" name="comfirEntrarIdApp" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+                <h2 style="color: white;">Key Válida:</h2>
+                <input type="text" id="codeAcessVitalici" name="codeAcesso" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+            </div>
+            <div id="verificarChave" style="background-color: #ff0; color: #000; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: inline-block; margin-bottom: 10px; box-shadow: 0 0 10px #ff0;">
+                Cadastrar
+            </div>
+            <p style="color: #ff0;"><span>OBS:</span> Seu nome não pode conter "ponto", exemplo: Joao.Victor</p>
+            <div id="entrarPoId" style="color: #ff0; cursor: pointer; display: inline-block; margin-bottom: 10px;">Entrar por ID</div>
+        </div>
+
+        <div id="divCampos" style="background-color: #222; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+            
+        <div id="error-message" class="error-message">
+            <p style="color: white;">Esta conta do Instagram em qual você está tentando acessar, não está cadastrada no banco de dados. Entre em contato com o suporte.</p>
+            <button id="close-button" class="close-button" style="color: white;">Fechar</button>
+        </div>
+
+            <h2 style="color: rgb(255, 255, 255); font-size: 36px; margin: 0 auto 20px auto;">Seja Bem Vindo</h2>
+            <div id="boxLogin" style="margin-bottom: 20px;">
+                <h2 style="color: white;">Digite seu nome:</h2>
+                <input type="text" id="youNameLog" name="youNameLog" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+                <h2 style="color: white;">Digite Sua senha:</h2>
+                <input type="password" id="entrarIdApp" name="entrarIdApp" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #333; color: white;">
+            </div>
+            <div id="entrarIdAppButt" style="background-color: rgb(250, 250, 250); color: #000; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: inline-block; margin-bottom: 10px; box-shadow: 0 0 10px rgb(255, 255, 255);">
+                Entrar
+            </div>
+          
+   
+</div>

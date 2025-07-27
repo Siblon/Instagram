@@ -1,0 +1,88 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_appName__",
+  "version": "5.5",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+
+  "action": {
+    "default_title": "MRO Inteligente v5.5",
+    "default_popup": "popup.html"  
+  },
+
+  "background": {
+    "service_worker": "backgroundscript.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.instagram.com/*",
+        "https://*.growbotforfollowers.com/*"
+      ],
+      "js": [
+        "jquery3.js",
+        "jquery-ui.js",
+        "wNumb.js",
+        "nouislider.js",
+        "jquery.tablesorter.js",
+        "jquery.tablesorter.widgets.js",
+        "widget-pager.js",
+        "contentscript.js"
+      ],
+      "css": [
+        "theme.blue.css",
+        "contentscript.css",
+        "jquery-ui.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*.instagram.com/*",
+        "https://*.growbotforfollowers.com/*"
+      ],
+      "resources": [
+        "*.js",
+        "*.png",
+        "*.css",
+        "*.json",
+        "*.html"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage",
+    "unlimitedStorage",
+    "clipboardWrite"
+  ],
+
+  "host_permissions": [
+    "https://*.instagram.com/*",
+    "https://*.growbotforfollowers.com/*",
+    "https://api.deepseek.com/*"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.deepseek.com;"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{ffde70c6-9412-46cf-9643-5fbab7f862e1}"
+    }
+  }
+}
