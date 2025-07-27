@@ -311,15 +311,12 @@ chrome.runtime.onInstalled.addListener(installedOrUpdated);
 
 function installedOrUpdated() {
     gblIgBotUser.init();
-    chrome.tabs.create({
-        url: "https://www.instagram.com"
-    }, function(tab) {
-        setTimeout(function() {
-            sendMessageToInstagramTabs({
-                "extension_updated": true
-            });
-        }, 5000);
-    });
+    // Avoid opening extra tabs; simply notify existing Instagram tabs
+    setTimeout(function() {
+        sendMessageToInstagramTabs({
+            "extension_updated": true
+        });
+    }, 5000);
 }
 
 function runWinVarsScript() {
