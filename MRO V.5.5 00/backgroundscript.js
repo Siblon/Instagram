@@ -10,6 +10,9 @@ var mainGrowbotTabId = 0;
 var lastStoryAcct;
 var clickedViewStoryTabIds = [];
 
+// Local authorization flag ensures the extension runs entirely offline
+const isUserAuthorized = true;
+
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
@@ -216,7 +219,7 @@ var gblIgBotUser = {
     install_date: new Date().toUTCString(),
     instabot_install_date: undefined,
     ig_users: [],
-    licenses: { "growbot_license": 1 }, // Sempre tem licença
+    licenses: { "growbot_license": isUserAuthorized ? 1 : 0 }, // Sempre tem licença local
     actions: [{
         date: '',
         action: ''
@@ -350,7 +353,7 @@ async function checkInstallDate() {
     gblIgBotUser.install_date = new Date(+installDate).toUTCString();
     
     // Sempre envia que tem licença
-    allLicensesFetched(1, { "growbot_license": 1 });
+    allLicensesFetched(1, { "growbot_license": isUserAuthorized ? 1 : 0 });
 }
 
 function sendMessageToInstagramTabs(message) {
@@ -369,7 +372,7 @@ function allLicensesFetched(count, licenses) {
     // Sempre envia que tem licença válida
     sendMessageToInstagramTabs({
         "instabot_install_date": gblIgBotUser.instabot_install_date,
-        "instabot_has_license": true,
+        "instabot_has_license": isUserAuthorized,
         igBotUser: gblIgBotUser
     });
 

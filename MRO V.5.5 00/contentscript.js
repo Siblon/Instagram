@@ -7,7 +7,7 @@
  */
 
 // Local authorization flag replaces the old remote login system
-const isAuthorized = true;
+const isUserAuthorized = true;
 
 // Initialize fake authentication data so logic relying on these values keeps working
 if (!localStorage.getItem('gbUserGuid')) {
@@ -262,7 +262,7 @@ var gblCheckboxPlugin;
 var instabot_install_date = 0; // set from background page
 var instabot_free_trial_time = 0; // set from background page
 // Authorization state used throughout the extension
-var instabot_has_license = isAuthorized;
+var instabot_has_license = isUserAuthorized;
 
 var defaultFilterOptions = {
     applyFiltersAutomatically: true,
@@ -7267,7 +7267,7 @@ function userUpdateListener() {
 
             if (request.instabot_has_license) {
                 // Ignore external license checks; use local authorization flag
-                instabot_has_license = isAuthorized;
+                instabot_has_license = isUserAuthorized;
 
                 if (request.igBotUser) {
                     localStorage['gbUserGuid'] = request.igBotUser.user_guid;
