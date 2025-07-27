@@ -12,8 +12,7 @@
   },
 
   "action": {
-    "default_title": "MRO Inteligente v5.5",
-    "default_popup": "popup.html"  
+    "default_title": "MRO Inteligente v5.5"
   },
 
   "background": {
