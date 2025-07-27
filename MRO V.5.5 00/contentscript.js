@@ -9,6 +9,14 @@
 // Local authorization flag replaces the old remote login system
 const isAuthorized = true;
 
+// Initialize fake authentication data so logic relying on these values keeps working
+if (!localStorage.getItem('gbUserGuid')) {
+    localStorage.setItem('gbUserGuid', 'local-guid');
+}
+if (!localStorage.getItem('gbFTover')) {
+    localStorage.setItem('gbFTover', false);
+}
+
 var guidCookie = localStorage['gbUserGuid'];
 var urlAcctInfo2 = 'https://www.instagram.com/';
 var urlAcctInfo = 'https://i.instagram.com/api/v1/users/web_profile_info/?username=';
