@@ -80,18 +80,16 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-// Configuração da API DeepSeek
-const DEEPSEEK_API_KEY = "sk-a0b69b58844f4600bac4040652b71572"; // Usando a chave fornecida pelo usuário
-const DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions";
-
+// Assistente funciona somente localmente. Chamada à API removida.
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementos principais
-    const nichoInput = document.getElementById('mroNichoInput');
     const pesquisarBtn = document.getElementById('mroPesquisarBtn');
     const messageContainer = document.getElementById('mroMessageContainer');
-    const copyHashtagsBtn = document.getElementById('copyHashtagsBtn');
 
-    let currentHashtags = []; // Para armazenar as hashtags para copiar
+    // Exibe aviso de funcionalidade desativada
+    pesquisarBtn.addEventListener('click', function() {
+        messageContainer.textContent = 'Funcionalidade indisponível nesta versão offline.';
+        messageContainer.classList.remove('hidden');
+    });
 
     // Função para mostrar/ocultar carregamento e conteúdo
     const toggleLoading = (tabId, show) => {
@@ -159,7 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
     setupTabs();
 
     // Função para consultar a API da DeepSeek
+    // API DeepSeek removida; função mantida apenas para compatibilidade
     async function consultarDeepSeek(nicho) {
+        throw new Error('DeepSeek desativado');
+    }
+
+    /* Removido:
         try {
             const prompt = `Forneça dados de marketing digital detalhados para o nicho "${nicho}" no formato JSON. Certifique-se de que todas as informações são relevantes e acionáveis para o marketing digital. Inclua as seguintes seções:
 
@@ -231,58 +234,9 @@ Retorne APENAS o JSON válido, sem marcações adicionais, comentários, texto e
             throw new Error(`Não foi possível obter dados da DeepSeek. Verifique sua conexão ou a chave da API. Detalhes: ${error.message}`);
         }
     }
+    */
 
-    // Função principal de pesquisa
-    pesquisarBtn.addEventListener('click', async function() {
-        const nicho = nichoInput.value.trim();
-        if (!nicho) {
-            showMessage('Por favor, digite um nicho para pesquisar.', 'error');
-            return;
-        }
-
-        // Limpar mensagens anteriores
-        messageContainer.style.display = 'none';
-        
-        // Ativar estados de carregamento para todas as abas e limpar conteúdo
-        ['perfis', 'estrategias', 'melhores-horarios', 'hashtags'].forEach(tab => {
-            toggleLoading(tab, true);
-            const contentContainer = document.querySelector(`#mro-${tab} .mro-${tab}-content`);
-            if (contentContainer) {
-                contentContainer.innerHTML = ''; // Clear previous results
-            }
-        });
-        
-        // Esconder o botão de copiar hashtags
-        copyHashtagsBtn.classList.add('hidden');
-        currentHashtags = []; // Reset hashtags
-
-        try {
-            // Consultar a API da DeepSeek
-            const dados = await consultarDeepSeek(nicho);
-            
-            // Renderizar os resultados
-            renderizarPerfis(dados.perfis);
-            renderizarEstrategias(dados.estrategias);
-            renderizarMelhoresHorarios(dados.melhores_horarios);
-            renderizarHashtags(dados.hashtags);
-
-            // Ativar a primeira aba (perfis) após a pesquisa
-            document.querySelector('.mro-tab-btn[data-tab="perfis"]').click();
-
-            showMessage('Pesquisa concluída com sucesso!', 'success');
-            
-        } catch (error) {
-            showMessage(`Ocorreu um erro: ${error.message}`, 'error');
-            // Limpar resultados e mostrar estado vazio em caso de erro
-            document.querySelector('#mro-perfis .mro-perfis-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
-            document.querySelector('#mro-estrategias .mro-estrategias-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
-            document.querySelector('#mro-melhores-horarios .mro-melhores-horarios-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
-            document.querySelector('#mro-hashtags .mro-hashtags-content').innerHTML = '<div class="mro-empty-state text-center py-10"><p class="text-gray-600">Não foi possível carregar os dados. Tente novamente.</p></div>';
-        } finally {
-            // Desativar estados de carregamento para todas as abas
-            ['perfis', 'estrategias', 'melhores-horarios', 'hashtags'].forEach(tab => toggleLoading(tab, false));
-        }
-    });
+    // Função principal de pesquisa original removida - API externa não é mais utilizada
 
     // Funções de renderização
     function renderizarPerfis(perfisTexto) {

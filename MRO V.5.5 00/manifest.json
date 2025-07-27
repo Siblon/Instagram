@@ -69,12 +69,11 @@
   ],
 
   "host_permissions": [
-    "https://*.instagram.com/*",
-    "https://api.deepseek.com/*"
+    "https://*.instagram.com/*"
   ],
 
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.deepseek.com;"
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self';"
   },
 
   "browser_specific_settings": {
