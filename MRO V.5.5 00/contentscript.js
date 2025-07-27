@@ -1188,32 +1188,24 @@ function getCsrfFromCookie() {
     return getCookie('csrftoken');
 }
 
-function getFollowersListContainer() {
-    const modal = document.querySelector('div[role="dialog"]');
-    if (!modal) return null;
-    let ul = modal.querySelector('ul');
-    if (ul && ul.querySelector('li button')) return ul;
-    ul = modal.querySelector('div ul');
-    if (ul && ul.querySelector('li button')) return ul;
-    return null;
-}
-
-async function waitForFollowersListContainer(maxWait = 5000) {
-    const start = Date.now();
-    return new Promise(resolve => {
-        (function check() {
-            const list = getFollowersListContainer();
-            if (list || Date.now() - start > maxWait) {
-                resolve(list);
+async function waitForFollowersModal(timeout = 10000) {
+    const startTime = Date.now();
+    return new Promise((resolve, reject) => {
+        const check = () => {
+            const modal = document.querySelector('div[role="dialog"]');
+            if (modal && modal.querySelector('ul')) {
+                resolve(modal.querySelector('ul'));
+            } else if (Date.now() - startTime > timeout) {
+                reject("❌ Timeout: Modal de seguidores não encontrado.");
             } else {
-                setTimeout(check, 100);
+                setTimeout(check, 300);
             }
-        })();
+        };
+        check();
     });
 }
 
-window.getFollowersListContainer = getFollowersListContainer;
-window.waitForFollowersListContainer = waitForFollowersListContainer;
+window.waitForFollowersModal = waitForFollowersModal;
 
 function displayFreeTrialTimeLeft() {
     $('#h2FreeTrialTimeLeft').text('VOCÊ É VIP');
