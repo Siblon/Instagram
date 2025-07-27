@@ -1188,24 +1188,28 @@ function getCsrfFromCookie() {
     return getCookie('csrftoken');
 }
 
-async function waitForFollowersModal(timeout = 10000) {
-    const startTime = Date.now();
+async function waitForFollowersList(timeout = 10000) {
     return new Promise((resolve, reject) => {
-        const check = () => {
+        const startTime = Date.now();
+        const interval = setInterval(() => {
             const modal = document.querySelector('div[role="dialog"]');
-            if (modal && modal.querySelector('ul')) {
-                resolve(modal.querySelector('ul'));
+            const scrollArea = modal?.querySelector('div[style*="overflow"]');
+            const ul = modal?.querySelector('ul');
+
+            if (ul && scrollArea) {
+                scrollArea.scrollTop = 1;
+                clearInterval(interval);
+                resolve(ul);
             } else if (Date.now() - startTime > timeout) {
-                reject("❌ Timeout: Modal de seguidores não encontrado.");
-            } else {
-                setTimeout(check, 300);
+                clearInterval(interval);
+                reject("❌ Modal ou lista de seguidores não encontrados.");
             }
-        };
-        check();
+        }, 300);
     });
 }
 
-window.waitForFollowersModal = waitForFollowersModal;
+window.waitForFollowersList = waitForFollowersList;
+window.waitForFollowersModal = waitForFollowersList;
 
 function displayFreeTrialTimeLeft() {
     $('#h2FreeTrialTimeLeft').text('VOCÊ É VIP');
