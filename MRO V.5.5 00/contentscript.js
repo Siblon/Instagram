@@ -7756,3 +7756,34 @@ function clickNotNow(override) {
     }
 }
 
+// Utility to determine if the bot should load on the current page
+function shouldLoadGrowbotOnThisPage() {
+    if (window.location.hostname.indexOf('instagram.com') === -1) return false;
+    if (document.querySelector('form[action*="/accounts/login/"]')) return false;
+    return true;
+}
+
+// Called once the DOM is ready and basic checks pass
+function domReady() {
+    if (shouldLoadGrowbotOnThisPage() === false) return false;
+    userUpdateListener();
+    chrome.runtime.sendMessage({ "updatewanted": true });
+    waitForWinVars();
+}
+
+// Wait for DOMContentLoaded before starting initialization
+function waitForDomReady() {
+    if (document.readyState === 'complete' || document.readyState !== 'loading') {
+        domReady();
+    } else {
+        document.addEventListener('DOMContentLoaded', domReady);
+    }
+}
+
+// Kick off initialization shortly after script load
+if (window.location.href === 'https://www.instagram.com/') {
+    setTimeout(waitForDomReady, 1500);
+} else {
+    setTimeout(waitForDomReady, 100);
+}
+
