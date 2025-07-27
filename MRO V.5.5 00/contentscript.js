@@ -1188,6 +1188,33 @@ function getCsrfFromCookie() {
     return getCookie('csrftoken');
 }
 
+function getFollowersListContainer() {
+    const modal = document.querySelector('div[role="dialog"]');
+    if (!modal) return null;
+    let ul = modal.querySelector('ul');
+    if (ul && ul.querySelector('li button')) return ul;
+    ul = modal.querySelector('div ul');
+    if (ul && ul.querySelector('li button')) return ul;
+    return null;
+}
+
+async function waitForFollowersListContainer(maxWait = 5000) {
+    const start = Date.now();
+    return new Promise(resolve => {
+        (function check() {
+            const list = getFollowersListContainer();
+            if (list || Date.now() - start > maxWait) {
+                resolve(list);
+            } else {
+                setTimeout(check, 100);
+            }
+        })();
+    });
+}
+
+window.getFollowersListContainer = getFollowersListContainer;
+window.waitForFollowersListContainer = waitForFollowersListContainer;
+
 function displayFreeTrialTimeLeft() {
     $('#h2FreeTrialTimeLeft').text('VOCÊ É VIP');
 }
