@@ -203,12 +203,8 @@ if (request.ig_user) {
     checkInstallDate();
 
     gblIgBotUser.saveToLocal();
-    gblIgBotUser.saveToServer();
 }
 
-if (request.fnc == 'openBuyScreen') {
-    openBuyScreen();
-}
 
 sendResponse();
 return true;
@@ -266,22 +262,6 @@ var gblIgBotUser = {
         chrome.storage.local.set({
             'igBotUser': JSON.stringify(gblIgBotUser)
         }, function() {});
-    },
-    saveToServer: function() {
-        for (var i = 0; i < this.ig_users.length; i++) {
-            fetch("https://www.growbotforfollowers.com/igBotUser/", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'user_guid': this.user_guid,
-                    'ig_username': this.current_ig_username,
-                    'install_date': this.install_date,
-                    'instabot_install_date': this.instabot_install_date
-                })
-            });
-        }
     }
 };
 
@@ -378,7 +358,7 @@ async function checkInstallDate() {
 
 function sendMessageToInstagramTabs(message) {
     chrome.tabs.query({
-        url: ["https://www.instagram.com/", "https://www.instagram.com/*", "https://www.growbotforfollowers.com/*"]
+        url: ["https://www.instagram.com/", "https://www.instagram.com/*"]
     }, function(tabs) {
         for (var i = 0; i < tabs.length; i++) {
             chrome.tabs.sendMessage(tabs[i].id, message).then(response => {
@@ -398,10 +378,6 @@ function allLicensesFetched(count, licenses) {
 
     gblIgBotUser.licenses = licenses;
     gblIgBotUser.saveToLocal();
-}
-
-function openBuyScreen() {
-    // Não faz nada já que sempre é premium
 }
 
 function uniq(ar) {
